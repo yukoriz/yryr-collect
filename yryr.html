@@ -186,7 +186,7 @@
 
   <header>
     <!-- 网站 LOGO 图片，路径按需替换 -->
-    <img class="site-logo" referrerpolicy="no-referrer" src="https://cdn.jsdelivr.net/gh/yukoriz/yryr-img@main/images/title.png" alt="YRYR Collect 标识">
+    <img class="site-logo" referrerpolicy="no-referrer" src="https://cdn.jsdelivr.net/gh/yukoriz/yryr-img@main/images/title.png" onerror="fallbackImg(this)" alt="YRYR Collect 标识">
     <div class="head-text">
       <!-- 网站大标题，可自行修改 -->
       <h1>YRYR Collect · 周边图鉴</h1>
@@ -241,7 +241,7 @@
   <div class="modal">
     <button class="close" id="closeBtn">×</button>
     <div class="m-stage">
-      <img class="m-img" id="mImg" referrerpolicy="no-referrer" decoding="async" alt="">
+      <img class="m-img" id="mImg" referrerpolicy="no-referrer" decoding="async" onerror="fallbackImg(this)" alt="">
       <button class="m-nav prev" id="mPrev">‹</button>
       <button class="m-nav next" id="mNext">›</button>
       <div class="m-counter" id="mCounter"></div>
@@ -373,6 +373,19 @@ function resolveSrc(src){
   return IMG_BASE + src.replace(/^\//, "");
 }
 
+// jsDelivr 加载失败时自动回退到 raw.githubusercontent.com
+function fallbackImg(img){
+  if(!img.dataset.retried && img.src.includes("cdn.jsdelivr.net/gh/")){
+    img.dataset.retried = "1";
+    img.src = img.src.replace(
+      /^https:\/\/cdn\.jsdelivr\.net\/gh\/([^/]+)\/([^@]+)@([^/]+)\//,
+      "https://raw.githubusercontent.com/$1/$2/$3/"
+    );
+    return;
+  }
+  img.classList.add("loaded");
+}
+
 // 兼容旧数据：旧的单 tag 写法自动归入 goods；旧 size 字段自动归入 info
 function normPhoto(p){
   if(typeof p === 'string') return { src:resolveSrc(p), roles:[], goods:[], name:"", info:"" };
@@ -499,7 +512,7 @@ function render(){
       const nameHtml = item.photo.name
         ? `<div class="g-name">${escapeHtml(item.photo.name)}</div>` : '';
       card.innerHTML = `
-        <div class="thumb"><img referrerpolicy="no-referrer" src="${escapeHtml(item.photo.src)}" loading="lazy" decoding="async" onload="this.classList.add('loaded')" alt="${escapeHtml(item.activity.title)}"></div>
+        <div class="thumb"><img referrerpolicy="no-referrer" src="${escapeHtml(item.photo.src)}" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="fallbackImg(this)" alt="${escapeHtml(item.activity.title)}"></div>
         <div class="body">
           ${nameHtml}
           <div class="g-from">${escapeHtml(item.activity.title)} · ${escapeHtml(item.activity.date)}</div>
@@ -523,9 +536,10 @@ function render(){
   list.forEach(a=>{
     const card = document.createElement('div');
     card.className = 'card';
-    const src = isValidSrc(a.cover) ? a.cover : firstPhotoSrc(a);
+    const rawCover = a.cover ? resolveSrc(a.cover) : "";
+    const src = isValidSrc(rawCover) ? rawCover : firstPhotoSrc(a);
     const thumb = src
-      ? `<div class="thumb"><img referrerpolicy="no-referrer" src="${escapeHtml(src)}" loading="lazy" decoding="async" onload="this.classList.add('loaded')" alt="${escapeHtml(a.title)}"></div>`
+      ? `<div class="thumb"><img referrerpolicy="no-referrer" src="${escapeHtml(src)}" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="fallbackImg(this)" alt="${escapeHtml(a.title)}"></div>`
       : `<div class="thumb"><span class="noimg">暂无封面</span></div>`;
     const roleHtml = getActivityRoles(a).map(t=>`<span>${escapeHtml(t)}</span>`).join('');
     card.innerHTML = `
@@ -614,7 +628,7 @@ function renderModal(){
     const t = document.createElement('img');
     t.referrerPolicy = "no-referrer";
     t.decoding = "async";
-    t.src = tp.src; t.loading='lazy'; t.alt = a.title;
+    t.src = tp.src; t.loading='lazy'; t.alt = a.title; t.onerror = function(){ fallbackImg(this); };
     if(i===modalIdx) t.classList.add('on');
     t.onclick = ()=>{ modalIdx = i; renderModal(); };
     thumbs.appendChild(t);

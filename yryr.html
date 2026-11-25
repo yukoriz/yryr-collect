@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
 <!-- 网站标题（浏览器标签栏显示），可自行修改 -->
 <title>YRYR Collect · 周边图鉴</title>
 <!-- 浏览器标签页小图标（favicon），与顶部 logo 同图 -->
@@ -177,7 +178,7 @@
 
   <header>
     <!-- 网站 LOGO 图片，路径按需替换 -->
-    <img class="site-logo" src="https://cdn.jsdelivr.net/gh/yukoriz/yryr-img@main/images/title.png" alt="YRYR Collect 标识">
+    <img class="site-logo" referrerpolicy="no-referrer" src="https://cdn.jsdelivr.net/gh/yukoriz/yryr-img@main/images/title.png" alt="YRYR Collect 标识">
     <div class="head-text">
       <!-- 网站大标题，可自行修改 -->
       <h1>YRYR Collect · 周边图鉴</h1>
@@ -232,7 +233,7 @@
   <div class="modal">
     <button class="close" id="closeBtn">×</button>
     <div class="m-stage">
-      <img class="m-img" id="mImg" alt="">
+      <img class="m-img" id="mImg" referrerpolicy="no-referrer" alt="">
       <button class="m-nav prev" id="mPrev">‹</button>
       <button class="m-nav next" id="mNext">›</button>
       <div class="m-counter" id="mCounter"></div>
@@ -253,17 +254,17 @@
 
 <script>
 /* ============================================================
-   ★★★ 数据区：你只需要维护下面这个数组，增删活动直接复制一整条改 ★★★
+  ★★★ 数据区：你只需要维护下面这个数组，增删活动直接复制一整条改 ★★★
 
-   字段说明：
-   title    【必填】活动全称，卡片上显示的就是这个
-   aliases  【选填】活动常用简称 / 别名数组，可写多个；搜索别名里的词也能搜到；
+  字段说明：
+  title    【必填】活动全称，卡片上显示的就是这个
+  aliases  【选填】活动常用简称 / 别名数组，可写多个；搜索别名里的词也能搜到；
             只在点开详情弹窗时显示，卡片上不显示。没有就写 []
-   date     【必填】时间，格式必须 YYYY-MM-DD（年-月-日），用于筛选和排序
-   cover    【必填】卡片封面图链接（jsDelivr 外链，或仓库内相对路径 images/...）；
+  date     【必填】时间，格式必须 YYYY-MM-DD（年-月-日），用于筛选和排序
+  cover    【必填】卡片封面图链接（jsDelivr 外链，或仓库内相对路径 images/...）；
             留空 "" 则自动取 photos 第一张
-   desc     【基本信息】文字介绍，换行用 \n
-   photos   【图片清单，每张图单独打标签】对象数组：
+  desc     【基本信息】文字介绍，换行用 \n
+  photos   【图片清单，每张图单独打标签】对象数组：
             {
               "src":   图片链接（必填）,
               "name":  这张图的备注名（选填，弹窗和图片卡片上显示；搜索框输入图名也能搜到），不需要留 ""
@@ -272,12 +273,12 @@
               "info":  "详细信息"           // 【选填】价格 / 尺寸 / 规格 / 发售备注等任意文字，不需要留 ""
             }
 
-   ★ 角色下拉自动收集所有 roles；制品下拉自动收集所有 goods。
-   ★ 固定标记 cover（封面）、sum（汇总总图）写在 goods 里，
-     不会出现在制品下拉、不会被筛出来。
-   ★ 制品用词统一即可：吧唧 / 色纸 / 立牌 / 帆布画 / 橡胶桌垫 /
-     亚克力挂件 / 明信片 / 相卡 / 拍立得 / 贴纸 / 文件夹 / 垫板 / 挂画 / 特典
-   ============================================================ */
+  ★ 角色下拉自动收集所有 roles；制品下拉自动收集所有 goods。
+  ★ 固定标记 cover（封面）、sum（汇总总图）写在 goods 里，
+    不会出现在制品下拉、不会被筛出来。
+  ★ 制品用词统一即可：吧唧 / 色纸 / 立牌 / 帆布画 / 橡胶桌垫 /
+    亚克力挂件 / 明信片 / 相卡 / 拍立得 / 贴纸 / 文件夹 / 垫板 / 挂画 / 特典
+  ============================================================ */
 const ACTIVITIES = [
   {
     title: "なもり画業20周年記念作品展（七森中美術部）",
@@ -290,7 +291,7 @@ const ACTIVITIES = [
       { src: "images/20261203-namori20th/sum-01.webp", name:"", roles: [], goods: [], info:"" },
       { src: "images/20261203-namori20th/sum-02.webp", name:"", roles: [], goods: [], info:"" },
       { src: "images/20261203-namori20th/extra-01.webp", name:"满赠", roles: ["赤座灯里","岁纳京子","船见结衣","吉川千夏","杉浦绫乃","池田千岁","大室樱子","古谷向日葵","大室抚子","园川惠","三轮蓝","八重野美穗","大室花子","小川心","相马未来","高崎美咲","池田千鹤","西垣奈奈","松本理世"], goods: ["特典","相卡"], info:"L判，满2k日元一张" },
-      { src: "images/20261203-namori20th/extra-02.webp", name:"入场特典", roles: ["赤座灯里","岁纳京子","船见结衣","吉川千夏","杉浦绫乃","池田千岁","大室樱子","古谷向日葵","池田千鹤","松本理世","全员"], goods: ["特典","亚克力板"], info:"购买门票" },
+      { src: "images/20261203-namori20th/extra-02.webp", name:"入场特典", roles: ["赤座灯里","岁纳京子","船见结衣","吉川千夏","杉浦绫乃","池田千岁","大室樱子","古谷向日葵","池田千鹤","松本理世","全员"], goods: ["特典","亚克力板","小卡"], info:"购买门票" },
       { src: "images/20261203-namori20th/01.jpg", name:"小画家立牌", roles: ["赤座灯里","岁纳京子","船见结衣","吉川千夏","杉浦绫乃","池田千岁","大室樱子","古谷向日葵","大室抚子","园川惠","三轮蓝","八重野美穗","大室花子","小川心","相马未来","高崎美咲","池田千鹤","西垣奈奈","松本理世"], goods: ["立牌"], info:"2090y,高约150毫米或以下" },
       { src: "images/20261203-namori20th/02.jpg", name:"小画家帆布画", roles: ["娱乐部","学生会","高中组","小学组","池田千鹤","西垣奈奈","松本理世"], goods: ["帆布画"], info:"5500y,F3" },
       { src: "images/20261203-namori20th/03.jpg", name:"小画家橡胶垫", roles: ["娱乐部","学生会","高中组","小学组","池田千鹤","西垣奈奈","松本理世"], goods: ["橡胶桌垫"], info:"4400y,600mm x 350mm" },
@@ -504,7 +505,7 @@ function render(){
       const nameHtml = item.photo.name
         ? `<div class="g-name">${escapeHtml(item.photo.name)}</div>` : '';
       card.innerHTML = `
-        <div class="thumb"><img src="${escapeHtml(item.photo.src)}" loading="lazy" alt="${escapeHtml(item.activity.title)}"></div>
+        <div class="thumb"><img referrerpolicy="no-referrer" src="${escapeHtml(item.photo.src)}" loading="lazy" alt="${escapeHtml(item.activity.title)}"></div>
         <div class="body">
           ${nameHtml}
           <div class="g-from">${escapeHtml(item.activity.title)} · ${escapeHtml(item.activity.date)}</div>
@@ -530,7 +531,7 @@ function render(){
     card.className = 'card';
     const src = isValidSrc(a.cover) ? a.cover : firstPhotoSrc(a);
     const thumb = src
-      ? `<div class="thumb"><img src="${escapeHtml(src)}" loading="lazy" alt="${escapeHtml(a.title)}"></div>`
+      ? `<div class="thumb"><img referrerpolicy="no-referrer" src="${escapeHtml(src)}" loading="lazy" alt="${escapeHtml(a.title)}"></div>`
       : `<div class="thumb"><span class="noimg">暂无封面</span></div>`;
     const roleHtml = getActivityRoles(a).map(t=>`<span>${escapeHtml(t)}</span>`).join('');
     card.innerHTML = `
@@ -617,6 +618,7 @@ function renderModal(){
   thumbs.innerHTML = '';
   modalPhotos.forEach((tp, i)=>{
     const t = document.createElement('img');
+    t.referrerPolicy = "no-referrer";
     t.src = tp.src; t.loading='lazy'; t.alt = a.title;
     if(i===modalIdx) t.classList.add('on');
     t.onclick = ()=>{ modalIdx = i; renderModal(); };

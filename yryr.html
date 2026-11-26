@@ -7,7 +7,13 @@
 <!-- 网站标题（浏览器标签栏显示），可自行修改 -->
 <title>YRYR Collect · 周边图鉴</title>
 <!-- 浏览器标签页小图标（favicon），与顶部 logo 同图 -->
+<meta name="theme-color" content="#fdf3f6">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+<link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin>
+<link rel="dns-prefetch" href="https://raw.githubusercontent.com">
 <link rel="icon" href="https://cdn.jsdelivr.net/gh/yukoriz/yryr-img@main/images/title.png" type="image/png">
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/yukoriz/yryr-img@main/images/title.png">
 <style>
   :root{
     --bg:#fdf3f6;
@@ -19,6 +25,9 @@
     --accent-soft:#fbeef3;
     --goods:#7a9cc6;
     --goods-soft:#eef2f8;
+    --thumb-bg:#eee;
+    --input-bg:#ffffff;
+    --modal-stage:#f4f4f4;
     --radius:14px;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
@@ -47,7 +56,7 @@
   .toolbar label{font-size:13px;color:var(--sub);white-space:nowrap;}
   .toolbar input[type=search],.toolbar input[type=date],.toolbar select{
     border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:14px;
-    background:#fff;color:var(--ink);outline:none;max-width:100%;
+    background:var(--input-bg);color:var(--ink);outline:none;max-width:100%;
   }
   .toolbar input[type=search]{min-width:200px;flex:1;}
   .toolbar select{cursor:pointer;min-width:120px;}
@@ -62,7 +71,7 @@
     overflow:hidden;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease;
   }
   .card:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(0,0,0,.07);}
-  .card .thumb{width:100%;aspect-ratio:4/3;background:#eee;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+  .card .thumb{width:100%;aspect-ratio:4/3;background:var(--thumb-bg);overflow:hidden;display:flex;align-items:center;justify-content:center;}
   .card .thumb img{
     width:100%;height:100%;object-fit:cover;display:block;
     opacity:0;transition:opacity .25s ease;
@@ -82,7 +91,7 @@
     overflow:hidden;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease;
   }
   .g-card:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(0,0,0,.07);}
-  .g-card .thumb{width:100%;aspect-ratio:1/1;background:#eee;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+  .g-card .thumb{width:100%;aspect-ratio:1/1;background:var(--thumb-bg);overflow:hidden;display:flex;align-items:center;justify-content:center;}
   .g-card .thumb img{
     width:100%;height:100%;object-fit:cover;display:block;
     opacity:0;transition:opacity .25s ease;
@@ -98,16 +107,19 @@
 
   .empty{text-align:center;color:var(--sub);padding:60px 0;font-size:14px;}
   .view-hint{font-size:13px;color:var(--sub);margin:-8px 0 16px;}
+  .load-more-wrap{text-align:center;margin-top:24px;}
+  .load-more-btn{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:9px 24px;font-size:13.5px;cursor:pointer;transition:border-color .15s,transform .15s;}
+  .load-more-btn:hover{border-color:var(--accent);transform:translateY(-1px);}
 
   /* ===== 详情弹窗（轮播） ===== */
   .modal-mask{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;padding:16px;z-index:50;}
   .modal-mask.open{display:flex;}
   .modal{
-    background:#fff;border-radius:16px;max-width:640px;width:100%;max-height:92vh;
+    background:var(--card);border-radius:16px;max-width:640px;width:100%;max-height:92vh;
     overflow-y:auto;position:relative;
   }
-  .modal .m-stage{position:relative;background:#f4f4f4;}
-  .modal .m-img{width:100%;max-height:56vh;object-fit:contain;display:block;background:#f4f4f4;}
+  .modal .m-stage{position:relative;background:var(--modal-stage);}
+  .modal .m-img{width:100%;max-height:56vh;object-fit:contain;display:block;background:var(--modal-stage);}
   .modal .m-nav{
     position:absolute;top:50%;transform:translateY(-50%);
     width:38px;height:38px;border-radius:50%;border:none;cursor:pointer;
@@ -132,7 +144,7 @@
   .modal .m-tags .g{color:var(--goods);background:var(--goods-soft);}
   .modal .m-photoname{font-size:14.5px;font-weight:600;margin-bottom:4px;}
   .modal .m-info{font-size:13px;color:var(--sub);margin-bottom:14px;white-space:pre-wrap;}
-  .modal .m-desc{font-size:14.5px;white-space:pre-wrap;color:#333;margin-bottom:16px;}
+  .modal .m-desc{font-size:14.5px;white-space:pre-wrap;color:var(--ink);margin-bottom:16px;}
   /* 底部缩略图条 */
   .modal .m-thumbs{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;}
   .modal .m-thumbs img{
@@ -184,6 +196,12 @@
 <body>
 <div class="wrap">
 
+  <noscript>
+    <div style="background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-bottom:18px;font-size:14px;">
+      <strong>YRYR Collect · 周边图鉴</strong>：本站的图鉴检索与筛选需要启用 JavaScript，请在浏览器设置中开启后刷新页面。
+    </div>
+  </noscript>
+
   <header>
     <!-- 网站 LOGO 图片，路径按需替换 -->
     <img class="site-logo" referrerpolicy="no-referrer" src="https://cdn.jsdelivr.net/gh/yukoriz/yryr-img@main/images/title.png" onerror="fallbackImg(this)" alt="YRYR Collect 标识">
@@ -231,6 +249,10 @@
 
   <!-- ===== 制品图片网格（选中制品后出现） ===== -->
   <div class="goods-grid" id="goodsGrid" style="display:none;"></div>
+
+  <div class="load-more-wrap" id="loadMoreWrap" style="display:none;">
+    <button class="load-more-btn" id="loadMoreBtn" type="button">加载更多</button>
+  </div>
 
   <div class="empty" id="empty" style="display:none;">没有匹配的内容</div>
 
@@ -488,8 +510,14 @@ function collectGoods(list){
   return out;
 }
 
-/* ---------- 主渲染 ---------- */
-function render(){
+/* ---------- 主渲染（分批加载避免首屏并发拥堵） ---------- */
+const BATCH_SIZE = 24;
+let visibleLimit = BATCH_SIZE;
+const loadMoreWrap = document.getElementById('loadMoreWrap');
+const loadMoreBtn = document.getElementById('loadMoreBtn');
+
+function render(resetPage = true){
+  if(resetPage) visibleLimit = BATCH_SIZE;
   const list = filteredActivities();
 
   // 制品视图：跨活动展示匹配图片
@@ -504,15 +532,17 @@ function render(){
     emptyEl.style.display = goods.length ? 'none' : 'block';
     goodsGrid.innerHTML = '';
 
-    goods.forEach(item=>{
+    const shown = goods.slice(0, visibleLimit);
+    shown.forEach((item, idx)=>{
       const card = document.createElement('div');
       card.className = 'g-card';
       const roleHtml = item.photo.roles.map(t=>`<span class="r">${escapeHtml(t)}</span>`).join('');
       const goodsHtml = item.photo.goods.filter(g=>!HIDDEN_GOODS.includes(g)).map(t=>`<span class="g">${escapeHtml(t)}</span>`).join('');
       const nameHtml = item.photo.name
         ? `<div class="g-name">${escapeHtml(item.photo.name)}</div>` : '';
+      const loadAttr = idx < 6 ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"';
       card.innerHTML = `
-        <div class="thumb"><img referrerpolicy="no-referrer" src="${escapeHtml(item.photo.src)}" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="fallbackImg(this)" alt="${escapeHtml(item.activity.title)}"></div>
+        <div class="thumb"><img referrerpolicy="no-referrer" src="${escapeHtml(item.photo.src)}" ${loadAttr} decoding="async" onload="this.classList.add('loaded')" onerror="fallbackImg(this)" alt="${escapeHtml(item.activity.title)}"></div>
         <div class="body">
           ${nameHtml}
           <div class="g-from">${escapeHtml(item.activity.title)} · ${escapeHtml(item.activity.date)}</div>
@@ -521,6 +551,13 @@ function render(){
       card.addEventListener('click', ()=>openLightbox(item.activity, item.index));
       goodsGrid.appendChild(card);
     });
+
+    if(goods.length > visibleLimit){
+      loadMoreWrap.style.display = 'block';
+      loadMoreBtn.textContent = `加载更多（剩余 ${goods.length - visibleLimit} 张）`;
+    } else {
+      loadMoreWrap.style.display = 'none';
+    }
     return;
   }
 
@@ -533,13 +570,15 @@ function render(){
   emptyEl.style.display = list.length ? 'none' : 'block';
   grid.innerHTML = '';
 
-  list.forEach(a=>{
+  const shownList = list.slice(0, visibleLimit);
+  shownList.forEach((a, idx)=>{
     const card = document.createElement('div');
     card.className = 'card';
     const rawCover = a.cover ? resolveSrc(a.cover) : "";
     const src = isValidSrc(rawCover) ? rawCover : firstPhotoSrc(a);
+    const loadAttr = idx < 6 ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"';
     const thumb = src
-      ? `<div class="thumb"><img referrerpolicy="no-referrer" src="${escapeHtml(src)}" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="fallbackImg(this)" alt="${escapeHtml(a.title)}"></div>`
+      ? `<div class="thumb"><img referrerpolicy="no-referrer" src="${escapeHtml(src)}" ${loadAttr} decoding="async" onload="this.classList.add('loaded')" onerror="fallbackImg(this)" alt="${escapeHtml(a.title)}"></div>`
       : `<div class="thumb"><span class="noimg">暂无封面</span></div>`;
     const roleHtml = getActivityRoles(a).map(t=>`<span>${escapeHtml(t)}</span>`).join('');
     card.innerHTML = `
@@ -552,7 +591,19 @@ function render(){
     card.addEventListener('click', ()=>openLightbox(a, 0));
     grid.appendChild(card);
   });
+
+  if(list.length > visibleLimit){
+    loadMoreWrap.style.display = 'block';
+    loadMoreBtn.textContent = `加载更多（剩余 ${list.length - visibleLimit} 场）`;
+  } else {
+    loadMoreWrap.style.display = 'none';
+  }
 }
+
+loadMoreBtn.addEventListener('click', ()=>{
+  visibleLimit += BATCH_SIZE;
+  render(false);
+});
 
 /* ---------- 弹窗轮播 ---------- */
 const mask = document.getElementById('mask');
@@ -620,6 +671,17 @@ function renderModal(){
   resetZoom();
   document.getElementById('mCounter').textContent = `${modalIdx+1} / ${modalPhotos.length}`;
   document.getElementById('mOpen').href = p.src;
+
+  // 后台预加载相邻的下一张和上一张大图，翻页更顺滑
+  if(modalPhotos.length > 1){
+    const nextIdx = (modalIdx + 1) % modalPhotos.length;
+    const prevIdx = (modalIdx - 1 + modalPhotos.length) % modalPhotos.length;
+    [nextIdx, prevIdx].forEach(i=>{
+      const pre = new Image();
+      pre.referrerPolicy = "no-referrer";
+      pre.src = modalPhotos[i].src;
+    });
+  }
 
   // 缩略条
   const thumbs = document.getElementById('mThumbs');
@@ -709,15 +771,15 @@ mImgZoom.addEventListener('wheel', e=>{
 }, { passive:false });
 
 /* ---------- 事件绑定 ---------- */
-kw.addEventListener('input', render);
-from.addEventListener('change', render);
-to.addEventListener('change', render);
-sortSel.addEventListener('change', render);
-roleSel.addEventListener('change', ()=>{ activeRole = roleSel.value; render(); });
-goodsSel.addEventListener('change', ()=>{ activeGoods = goodsSel.value; render(); });
+kw.addEventListener('input', ()=>render(true));
+from.addEventListener('change', ()=>render(true));
+to.addEventListener('change', ()=>render(true));
+sortSel.addEventListener('change', ()=>render(true));
+roleSel.addEventListener('change', ()=>{ activeRole = roleSel.value; render(true); });
+goodsSel.addEventListener('change', ()=>{ activeGoods = goodsSel.value; render(true); });
 
 buildSelects();
-render();
+render(true);
 </script>
 </body>
 </html>

@@ -41,12 +41,34 @@
   }
   .wrap{max-width:1240px;margin:0 auto;padding:28px 20px 80px;}
 
-  /* ===== 顶部标题 ===== */
-  header{margin-bottom:22px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+  /* ===== 顶部标题与作者声明 ===== */
+  header{margin-bottom:22px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;}
+  .head-left{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
   .site-logo{height:46px;width:auto;display:block;border-radius:10px;object-fit:contain;}
   header .head-text{display:flex;flex-direction:column;}
-  header h1{font-size:24px;font-weight:700;letter-spacing:1px;}
+  header h1{font-size:24px;font-weight:700;letter-spacing:1px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+  .curator-badge{
+    font-size:12.5px;font-weight:600;color:var(--accent-deep);
+    background:var(--accent-soft);border:1px solid #f4cfd9;
+    border-radius:999px;padding:2px 10px;letter-spacing:0;
+  }
   header p{color:var(--sub);font-size:13px;margin-top:4px;}
+  .site-notice{
+    width:100%;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-left:4px solid var(--accent);
+    border-radius:10px;
+    padding:9px 14px;
+    font-size:13px;
+    color:var(--ink);
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:4px;
+  }
+  .site-notice strong{color:var(--accent-deep);}
+  .site-notice a{color:var(--accent-deep);text-decoration:underline;}
 
   /* ===== 主体双栏布局：左侧制品侧边栏 + 右侧主内容区 ===== */
   .main-layout{
@@ -229,10 +251,17 @@
   .toolbar .field{display:flex;align-items:center;gap:8px;}
   .toolbar label{font-size:13px;color:var(--sub);white-space:nowrap;}
   .toolbar input[type=search],.toolbar input[type=date],.toolbar select{
-    border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:14px;
+    border:1px solid var(--line);border-radius:8px;padding:0 12px;font-size:14px;
     background:var(--input-bg);color:var(--ink);outline:none;max-width:100%;
+    height:40px;line-height:1.4;box-sizing:border-box;width:auto;
   }
-  .toolbar input[type=search]{min-width:200px;flex:1;}
+  .toolbar .field-search{flex:1 1 100%;}
+  .toolbar input[type=search]{min-width:0;flex:1;width:100%;}
+  .toolbar input::placeholder{color:var(--sub);opacity:.85;}
+  .toolbar input[type=search]::-webkit-search-decoration,
+  .toolbar input[type=search]::-webkit-search-cancel-button{
+    -webkit-appearance:none;appearance:none;display:none;
+  }
   .toolbar select{cursor:pointer;min-width:130px;}
   .toolbar input:focus,.toolbar select:focus{border-color:var(--accent);}
   .toolbar .spacer{flex:1;}
@@ -279,7 +308,18 @@
   .g-card .g-tags .r{color:var(--accent);background:var(--accent-soft);}
   .g-card .g-tags .g{color:var(--goods);background:var(--goods-soft);}
 
-  .empty{text-align:center;color:var(--sub);padding:60px 0;font-size:14px;}
+  /* ===== 空状态友好提示 ===== */
+  .empty{
+    text-align:center;color:var(--sub);
+    background:var(--card);border:1px dashed var(--line);border-radius:var(--radius);
+    padding:48px 20px;font-size:14px;line-height:1.8;
+  }
+  .empty .empty-reset{
+    margin-top:14px;border:1px solid var(--accent);background:var(--accent-soft);
+    color:var(--accent-deep);border-radius:999px;padding:6px 18px;font-size:13px;cursor:pointer;
+  }
+  .empty .empty-reset:hover{background:var(--accent);color:#fff;}
+
   .view-hint{
     font-size:13px;color:var(--goods);background:var(--goods-soft);
     padding:8px 12px;border-radius:10px;margin:-4px 0 16px;
@@ -293,6 +333,14 @@
   .load-more-wrap{text-align:center;margin-top:24px;}
   .load-more-btn{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:9px 24px;font-size:13.5px;cursor:pointer;transition:border-color .15s,transform .15s;}
   .load-more-btn:hover{border-color:var(--accent);transform:translateY(-1px);}
+
+  /* ===== 底部页脚署名 ===== */
+  footer.site-footer{
+    margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
+    text-align:center;font-size:13px;color:var(--sub);line-height:1.8;
+  }
+  footer.site-footer strong{color:var(--accent-deep);}
+  footer.site-footer a{color:var(--accent-deep);text-decoration:underline;}
 
   /* ===== 详情弹窗（轮播） ===== */
   .modal-mask{position:fixed;inset:0;background:rgba(43,34,38,.52);display:none;align-items:center;justify-content:center;padding:16px;z-index:50;}
@@ -393,12 +441,17 @@
     </div>
   </noscript>
   <header>
-    <!-- 网站 LOGO 图片，路径按需替换 -->
-    <img class="site-logo" referrerpolicy="no-referrer" src="https://cdn.jsdelivr.net/gh/yukoriz/yryr-img@main/images/title.png" onerror="fallbackImg(this)" alt="YRYR Collect 标识">
-    <div class="head-text">
-      <!-- 网站大标题，可自行修改 -->
-      <h1>YRYR Collect · 周边图鉴</h1>
-      <p>点活动卡片看整套图；左侧边栏按字母选制品，顶部工具栏选角色与时间</p>
+    <div class="head-left">
+      <!-- 网站 LOGO 图片，路径按需替换 -->
+      <img class="site-logo" referrerpolicy="no-referrer" src="https://cdn.jsdelivr.net/gh/yukoriz/yryr-img@main/images/title.png" onerror="fallbackImg(this)" alt="YRYR Collect 标识">
+      <div class="head-text">
+        <!-- 网站大标题，可自行修改 -->
+        <h1>YRYR Collect · 周边图鉴 </h1>
+        <p>点活动卡片看整套图；左侧边栏按字母选制品，顶部工具栏可直接搜角色/制品或筛选时间</p>
+      </div>
+    </div>
+    <div class="site-notice">
+      <span>图鉴由<strong>楚恬</strong>收集整理分类，网站有问题/提出建议可以发邮件至 <a href="mailto:1722068978@qq.com">1722068978@qq.com</a>，本网站仅用于同好分享交流。图源网络,侵删。</span>
     </div>
   </header>
 
@@ -421,9 +474,9 @@
     <div class="content-col">
       <!-- ===== 工具栏：搜索 + 角色下拉 + 时间 + 排序 ===== -->
       <div class="toolbar">
-        <div class="field">
+        <div class="field field-search">
           <label>搜索</label>
-          <input type="search" id="kw" placeholder="名称 / 别名 / 图名 / 简介关键词">
+          <input type="search" id="kw" placeholder="名称 / 别名 / 角色 / 制品 / 简介">
         </div>
         <div class="field">
           <label>角色</label>
@@ -447,22 +500,29 @@
       <!-- ===== 视图提示 ===== -->
       <div class="view-hint" id="hint" style="display:none;">
         <span id="hintText"></span>
-        <button type="button" class="clear-goods" id="clearGoodsBtn">重置标签筛选</button>
+        <button type="button" class="clear-goods" id="clearGoodsBtn">重置筛选条件</button>
       </div>
 
       <!-- ===== 活动卡片列表（默认视图） ===== -->
       <div class="grid" id="grid"></div>
 
-      <!-- ===== 制品/角色图片网格（选中制品或角色后出现） ===== -->
+      <!-- ===== 制品/角色/搜索图片网格 ===== -->
       <div class="goods-grid" id="goodsGrid" style="display:none;"></div>
 
       <div class="load-more-wrap" id="loadMoreWrap" style="display:none;">
         <button class="load-more-btn" id="loadMoreBtn" type="button">加载更多</button>
       </div>
 
-      <div class="empty" id="empty" style="display:none;">没有匹配的内容</div>
+      <div class="empty" id="empty" style="display:none;">
+        <div>没有找到符合当前筛选条件的周边，可以取消部分标签重新试试。</div>
+        <button type="button" class="empty-reset" id="emptyResetBtn">清空全部筛选条件</button>
+      </div>
     </div>
   </div>
+
+  <footer class="site-footer">
+    图鉴由<strong>楚恬</strong>收集整理分类，网站有问题/提出建议可以发邮件至 <a href="mailto:1722068978@qq.com">1722068978@qq.com</a>，本网站仅用于同好分享交流。图源网络,侵删。
+  </footer>
 </div>
 
 <!-- ===== 详情弹窗（轮播） ===== -->
@@ -495,6 +555,8 @@
 const IMG_BASE = "https://cdn.jsdelivr.net/gh/yukoriz/yryr-img@main/";
 // 这些固定标记不进入制品侧边栏、不参与筛选
 const HIDDEN_GOODS = ["cover", "sum"];
+// 本地筛选状态记忆 key
+const FILTER_STORAGE_KEY = "yryr_collect_filter_state_v1";
 
 // 角色排序优先级：娱乐部四人组（主角） -> 学生会四人组 -> 大室家姐妹及同学 -> 亲属/其他角色 -> 组合/全员标签
 const ROLE_ORDER = [
@@ -512,14 +574,41 @@ const ROLE_ORDER = [
   "娱乐部", "学生会", "大室家", "高中组", "小学组", "全员", "水母", "其他"
 ];
 
-// 分组映射：选分组标签时，可匹配组名本身或组内成员角色 tag
-const groupMap = {
-  "娱乐部": ["赤座灯里", "岁纳京子", "船见结衣", "吉川千夏"],
-  "学生会": ["杉浦绫乃", "池田千岁", "大室樱子", "古谷向日葵"],
-  "大室家": ["大室樱子", "大室抚子", "大室花子"],
-  "高中组": ["园川惠", "三轮蓝", "八重野美穗", "大室抚子"],
-  "小学组": ["大室花子", "小川心", "相马未来", "高崎美咲"]
+// 角色别名对照表：key=标准本名，value=别称（简称/罗马音/外号）。在搜索框输入别称即可命中本体角色
+// 注意：data.json 里 photos[].roles 只写标准本名，所有别称统一维护在这一张表里
+const ROLE_ALIAS_MAP = {
+  "赤座灯里":["灯里", "阿卡林", "akarin"],
+  "岁纳京子":["京子", "kyoko"],
+  "船见结衣":["结衣", "yui"],
+  "吉川千夏":["千夏", "chinatsu"],
+  "杉浦绫乃":["绫乃", "ayano"],
+  "池田千岁":["千岁", "chiito"],
+  "大室樱子":["樱子", "sakurako"],
+  "古谷向日葵":["向日葵", "himawari"],
+  "大室抚子":["抚子", "nadeshiko"],
+  "大室花子":["花子", "hanako"],
+  "池田千鹤":["千鹤"],
+  "松本理世":["会长"],
+  "西垣奈奈":["老师"],
+  "赤座茜":["灯姐","灯里姐姐","姐姐"],
+  "吉川友子":["千夏姐姐","姐姐"],
+  "古谷枫":["向日葵妹妹"],
+  "船见真理":["结衣妹妹"],
 };
+
+// 输入搜索关键词，返回命中的标准角色名数组（本名或任意别称包含该词即命中）
+function resolveRoleAliases(keyword){
+  const kw = String(keyword || "").trim().toLowerCase();
+  if(!kw) return [];
+  const result = [];
+  for(const [realName, aliasList] of Object.entries(ROLE_ALIAS_MAP)){
+    const aliases = [realName, ...(aliasList || [])].map(a => String(a).toLowerCase());
+    if(aliases.some(a => a.includes(kw))){
+      result.push(realName);
+    }
+  }
+  return result;
+}
 
 let ACTIVITIES = []; // 会从 data.json 远程加载
 
@@ -529,6 +618,7 @@ const emptyEl = document.getElementById('empty');
 const hintEl = document.getElementById('hint');
 const hintTextEl = document.getElementById('hintText');
 const clearGoodsBtn = document.getElementById('clearGoodsBtn');
+const emptyResetBtn = document.getElementById('emptyResetBtn');
 const kw = document.getElementById('kw');
 const from = document.getElementById('from');
 const to = document.getElementById('to');
@@ -545,6 +635,52 @@ const sbScroll = document.getElementById('sbScroll');
 
 let activeRole = "";   // 选中的角色 tag，空=全部
 let activeGoods = "";  // 选中的制品 tag，空=全部
+
+/* ---------- 本地状态记忆（localStorage） ---------- */
+function saveFilterState(){
+  try{
+    const state = {
+      activeRole,
+      activeGoods,
+      from: from.value || "",
+      to: to.value || "",
+      kw: kw.value || "",
+      sort: sortSel.value || "desc"
+    };
+    localStorage.setItem(FILTER_STORAGE_KEY, JSON.stringify(state));
+  }catch(e){}
+}
+
+function loadFilterState(){
+  try{
+    const raw = localStorage.getItem(FILTER_STORAGE_KEY);
+    if(!raw) return;
+    const state = JSON.parse(raw);
+    if(!state || typeof state !== "object") return;
+    if(typeof state.activeRole === "string") activeRole = state.activeRole;
+    if(typeof state.activeGoods === "string") activeGoods = state.activeGoods;
+    if(typeof state.from === "string") from.value = state.from;
+    if(typeof state.to === "string") to.value = state.to;
+    if(typeof state.kw === "string") kw.value = state.kw;
+    if(state.sort === "asc" || state.sort === "desc") sortSel.value = state.sort;
+  }catch(e){}
+}
+
+function resetAllFilters(){
+  activeRole = "";
+  activeGoods = "";
+  roleSel.value = "";
+  kw.value = "";
+  from.value = "";
+  to.value = "";
+  sortSel.value = "desc";
+  syncSidebarActive();
+  saveFilterState();
+  render(true);
+}
+
+// 启动时先恢复输入框状态，数据加载后再同步下拉与侧边栏高亮
+loadFilterState();
 
 function escapeHtml(s){
   return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -607,15 +743,31 @@ function sortRolesList(roleSet){
   });
 }
 
-/* ---------- 判断图片是否匹配角色 tag ---------- */
+/* ---------- 严格按图片自身 roles tag 匹配（不自动展开组内成员） ---------- */
 function photoMatchesRole(photoNorm, role){
   if(!role) return true;
-  const roles = photoNorm.roles || [];
-  if(roles.includes(role)) return true;
-  if(Array.isArray(groupMap[role])){
-    return groupMap[role].some(member => roles.includes(member));
+  return (photoNorm.roles || []).includes(role);
+}
+
+/* ---------- 判断单张图片是否匹配搜索关键词（支持标题/别名/简介/图名/角色tag/制品tag） ---------- */
+function photoMatchesKeyword(activity, photoNorm, q){
+  if(!q) return true;
+  const visibleGoods = (photoNorm.goods || []).filter(g => g && !HIDDEN_GOODS.includes(g));
+  // 关键词命中角色别称时，换算成本体角色再判断
+  const matchedRoles = resolveRoleAliases(q);
+  if(matchedRoles.length){
+    if((photoNorm.roles || []).some(r => matchedRoles.includes(r))) return true;
   }
-  return false;
+  const searchText = [
+    activity.title || '',
+    ...(activity.aliases || []),
+    activity.desc || '',
+    photoNorm.name || '',
+    photoNorm.info || '',
+    ...(photoNorm.roles || []),
+    ...visibleGoods
+  ].join(' ').toLowerCase();
+  return searchText.includes(q);
 }
 
 /* ---------- 汉字/英文首字母提取（用于制品 A-Z 索引） ---------- */
@@ -676,6 +828,10 @@ function collectOptions(){
 /* ---------- 构建角色下拉 + 左侧制品侧边栏 ---------- */
 function buildControls(){
   const { roles, goodsCountMap } = collectOptions();
+
+  // 若本地记忆的角色/制品在最新 data.json 中已不存在，自动清理避免卡死空状态
+  if(activeRole && !roles.includes(activeRole)) activeRole = "";
+  if(activeGoods && !goodsCountMap.has(activeGoods)) activeGoods = "";
 
   roleSel.innerHTML = '<option value="">全部角色</option>';
   roles.forEach(r=>{
@@ -768,44 +924,47 @@ function syncSidebarActive(){
 function selectGoods(goodsName){
   activeGoods = goodsName || "";
   syncSidebarActive();
+  saveFilterState();
   render(true);
 }
 
 sbAllBtn.addEventListener('click', () => selectGoods(""));
 clearGoodsBtn.addEventListener('click', () => {
   if(activeGoods){
-    selectGoods("");
+    activeGoods = "";
+    syncSidebarActive();
   }
   if(activeRole){
     activeRole = "";
     roleSel.value = "";
-    render(true);
   }
+  saveFilterState();
+  render(true);
 });
+emptyResetBtn.addEventListener('click', resetAllFilters);
 
 /* ---------- 活动列表过滤（时间 / 关键词 / 角色 / 制品） ---------- */
 function filteredActivities(){
   let list = ACTIVITIES.slice();
+  const q = kw.value.trim().toLowerCase();
+
   if(activeRole){
     list = list.filter(a =>
       (a.photos||[]).some(p => photoMatchesRole(normPhoto(p), activeRole))
     );
   }
-  const q = kw.value.trim().toLowerCase();
+
   if(q){
     list = list.filter(a => {
-      const photoNames = (a.photos||[]).map(p => normPhoto(p).name || "").join(' ');
-      const photoInfos = (a.photos||[]).map(p => normPhoto(p).info || "").join(' ');
-      const searchText = [
-        a.title,
-        ...(a.aliases||[]),
-        a.desc||'',
-        photoNames,
-        photoInfos
-      ].join(' ').toLowerCase();
-      return searchText.includes(q);
+      const photos = a.photos || [];
+      if(photos.length){
+        return photos.some(p => photoMatchesKeyword(a, normPhoto(p), q));
+      }
+      const fallbackText = [a.title, ...(a.aliases||[]), a.desc||''].join(' ').toLowerCase();
+      return fallbackText.includes(q);
     });
   }
+
   const normDate = d => String(d || '').slice(0, 10);
   if(from.value) list = list.filter(a => normDate(a.date) >= from.value);
   if(to.value) list = list.filter(a => normDate(a.date) <= to.value);
@@ -824,15 +983,17 @@ function getActivityRoles(a){
   (a.photos||[]).forEach(p=>normPhoto(p).roles.forEach(r=>set.add(r)));
   return sortRolesList(set);
 }
-// 收集符合当前“角色 tag / 制品 tag”条件的图片列表
+// 收集符合当前“角色 tag / 制品 tag / 搜索词”条件的图片列表
 function collectMatchedPhotos(list){
   const out = [];
+  const q = kw.value.trim().toLowerCase();
   list.forEach(a=>{
     (a.photos||[]).forEach((p,i)=>{
       const n = normPhoto(p);
       if(!isValidSrc(n.src)) return;
       if(activeGoods && !n.goods.includes(activeGoods)) return;
       if(activeRole && !photoMatchesRole(n, activeRole)) return;
+      if(q && !photoMatchesKeyword(a, n, q)) return;
       out.push({ activity:a, photo:n, index:i });
     });
   });
@@ -848,18 +1009,25 @@ const loadMoreBtn = document.getElementById('loadMoreBtn');
 function render(resetPage = true){
   if(resetPage) visibleLimit = BATCH_SIZE;
   const list = filteredActivities();
+  const q = kw.value.trim();
+  const isPhotoGridMode = Boolean(activeGoods || activeRole || q);
 
-  // 当选中“角色 tag”或“制品 tag”时，直接按图片 tag 维度展示匹配图片
-  if(activeGoods || activeRole){
+  // 当选中“角色 / 制品 / 搜索关键词”时，按单张图片维度展示匹配周边
+  if(isPhotoGridMode){
     grid.style.display = 'none';
     goodsGrid.style.display = 'grid';
     const matchedPhotos = collectMatchedPhotos(list);
     const parts = [];
     if(activeRole) parts.push(`角色「${activeRole}」`);
     if(activeGoods) parts.push(`制品「${activeGoods}」`);
-    hintEl.style.display = 'flex';
-    hintTextEl.textContent = `按图片 Tag 筛选 · ${parts.join('｜')}：共 ${matchedPhotos.length} 张（涉及 ${list.length} 场活动）`;
-    clearGoodsBtn.textContent = (activeGoods && activeRole) ? '清除标签筛选' : (activeGoods ? '返回全部制品' : '清除角色筛选');
+    if(q) parts.push(`搜索「${q}」`);
+
+    const hasTagHint = Boolean(activeGoods || activeRole);
+    hintEl.style.display = hasTagHint ? 'flex' : 'none';
+    if(hasTagHint){
+      hintTextEl.textContent = `图片筛选 · ${parts.join('｜')}：共 ${matchedPhotos.length} 张（涉及 ${list.length} 场活动）`;
+      clearGoodsBtn.textContent = (activeGoods && !activeRole) ? '返回全部制品' : '重置标签筛选';
+    }
     countEl.textContent = `共 ${matchedPhotos.length} 张`;
     emptyEl.style.display = matchedPhotos.length ? 'none' : 'block';
     goodsGrid.innerHTML = '';
@@ -894,7 +1062,7 @@ function render(resetPage = true){
     return;
   }
 
-  // 默认（未选角色也未选制品）：活动卡片视图
+  // 默认（未选角色、未选制品、无搜索词）：活动卡片视图
   goodsGrid.style.display = 'none';
   grid.style.display = 'grid';
   hintEl.style.display = 'none';
@@ -1091,17 +1259,17 @@ async function loadData(){
     render(true);
   }catch(err){
     console.error("数据加载失败：",err);
-    emptyEl.textContent = "数据文件 data.json 加载失败";
+    emptyEl.innerHTML = '<div>数据文件 data.json 加载失败，请刷新页面重试。</div>';
     emptyEl.style.display="block";
   }
 }
 
-/* ---------- 事件绑定 ---------- */
-kw.addEventListener('input', ()=>render(true));
-from.addEventListener('change', ()=>render(true));
-to.addEventListener('change', ()=>render(true));
-sortSel.addEventListener('change', ()=>render(true));
-roleSel.addEventListener('change', ()=>{ activeRole = roleSel.value; render(true); });
+/* ---------- 事件绑定（同步写入 localStorage） ---------- */
+kw.addEventListener('input', ()=>{ saveFilterState(); render(true); });
+from.addEventListener('change', ()=>{ saveFilterState(); render(true); });
+to.addEventListener('change', ()=>{ saveFilterState(); render(true); });
+sortSel.addEventListener('change', ()=>{ saveFilterState(); render(true); });
+roleSel.addEventListener('change', ()=>{ activeRole = roleSel.value; saveFilterState(); render(true); });
 
 // 启动：读取外部json
 loadData();

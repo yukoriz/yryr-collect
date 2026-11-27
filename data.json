@@ -1198,67 +1198,67 @@
   "title": "摇曳百合25卷",
   "aliases": ["yryr25", "摇曳百合25册漫画","摇曳百合第25卷"],
   "date": "2026-10-28",
-  "cover": "images/20261028-yryr25/cover.png",
+  "cover": "images/20261028-yryr25/cover-01.webp",
   "desc": "活动时间：2026-10-28\n备注：摇曳百合25，各店铺购入特典插画卡。",
   "photos": [
     {
-      "src": "images/20261028-yryr25/cover-01.png",
+      "src": "images/20261028-yryr25/cover-01.webp",
       "name": "普装版封面",
       "roles": ["赤座灯里","吉川千夏"],
       "goods": ["漫画书"],
       "info": ""
     },
     {
-      "src": "images/20261028-yryr25/cover-02.png",
+      "src": "images/20261028-yryr25/cover-02.webp",
       "name": "特装版封面",
       "roles": ["赤座灯里","吉川千夏"],
       "goods": ["漫画书"],
       "info": ""
     },
     {
-      "src": "images/20261028-yryr25/extra.png",
+      "src": "images/20261028-yryr25/extra.webp",
       "name": "小册子",
       "roles": ["船见真理"],
       "goods": ["册子/本子"],
       "info": "特装版附赠"
     },
     {
-      "src": "images/20261028-yryr25/sum.png",
+      "src": "images/20261028-yryr25/sum.webp",
       "name": "特典汇总图",
       "roles": [],
       "goods": [],
       "info": "各店铺购入特典一览"
     },
     {
-      "src": "images/20261028-yryr25/01.png",
+      "src": "images/20261028-yryr25/01.webp",
       "name": "yryr25蜜瓜特典",
       "roles": ["吉川千夏","岁纳京子"],
       "goods": ["书特"],
       "info": "メロンブックス（Melonbooks）购入特典"
     },
     {
-      "src": "images/20261028-yryr25/02.png",
+      "src": "images/20261028-yryr25/02.webp",
       "name": "yryr25G店特典",
       "roles": ["杉浦绫乃","池田千岁"],
       "goods": ["书特"],
       "info": "ゲーマーズ（Gamers）购入特典"
     },
     {
-      "src": "images/20261028-yryr25/03.png",
+      "src": "images/20261028-yryr25/03.webp",
       "name": "yryr25虎穴特典",
       "roles": ["大室樱子","古谷向日葵"],
       "goods": ["书特"],
       "info": "とらのあな（Toranoana 虎之穴）购入特典"
     },
     {
-      "src": "images/20261028-yryr25/04.png",
+      "src": "images/20261028-yryr25/04.webp",
       "name": "yryr25A店特典",
       "roles": ["赤座灯里","船见结衣"],
       "goods": ["书特"],
       "info": "アニメイト（Animate）购入特典"
     },
     {
-      "src": "images/20261028-yryr25/05.png",
+      "src": "images/20261028-yryr25/05.webp",
       "name": "yryr25应援店特典",
       "roles": ["船见结衣","岁纳京子"],
       "goods": ["书特"],
@@ -1270,67 +1270,67 @@
   "title": "大室家 9卷",
   "aliases": ["omrk9", "大室家第9卷", "大室家9"],
   "date": "2026-10-28",
-  "cover": "images/20261028-omrk9/cover-01.png",
+  "cover": "images/20261028-omrk9/cover-01.webp",
   "desc": "活动时间：2026-10-28\n备注：大室家第9卷，各店铺购入特典插画卡。",
   "photos": [
     {
-      "src": "images/20261028-omrk9/cover-01.png",
+      "src": "images/20261028-omrk9/cover-01.webp",
       "name": "普装版封面",
       "roles": ["高中组"],
       "goods": ["漫画书"],
       "info": ""
     },
     {
-      "src": "images/20261028-omrk9/cover-02.png",
+      "src": "images/20261028-omrk9/cover-02.webp",
       "name": "特装版封面",
       "roles": ["高中组"],
       "goods": ["漫画书"],
       "info": ""
     },
     {
-      "src": "images/20261028-omrk9/extra.png",
+      "src": "images/20261028-omrk9/extra.webp",
       "name": "小册子",
       "roles": ["相马未来","小川心"],
       "goods": ["册子/本子"],
       "info": "特装版附赠"
     },
     {
-      "src": "images/20261028-omrk9/sum.png",
+      "src": "images/20261028-omrk9/sum.webp",
       "name": "特典汇总图",
       "roles": [],
       "goods": [],
       "info": "各店铺购入特典一览"
     },
     {
-      "src": "images/20261028-omrk9/01.png",
+      "src": "images/20261028-omrk9/01.webp",
       "name": "omrk9蜜瓜特典",
       "roles": ["高崎美咲"],
       "goods": ["书特"],
       "info": "メロンブックス（Melonbooks）购入特典"
     },
     {
-      "src": "images/20261028-omrk9/02.png",
+      "src": "images/20261028-omrk9/02.webp",
       "name": "omrk9G店特典",
       "roles": ["相马未来"],
       "goods": ["书特"],
       "info": "ゲーマーズ（Gamers）购入特典"
     },
     {
-      "src": "images/20261028-omrk9/03.png",
+      "src": "images/20261028-omrk9/03.webp",
       "name": "omrk9虎穴特典",
       "roles": ["小川心"],
       "goods": ["书特"],
       "info": "とらのあな（Toranoana 虎之穴）购入特典"
     },
     {
-      "src": "images/20261028-omrk9/04.png",
+      "src": "images/20261028-omrk9/04.webp",
       "name": "omrk9A店特典",
       "roles": ["大室花子"],
       "goods": ["书特"],
       "info": "アニメイト（Animate）购入特典"
     },
     {
-      "src": "images/20261028-omrk9/05.png",
+      "src": "images/20261028-omrk9/05.webp",
       "name": "omrk9应援店特典",
       "roles": ["大室家"],
       "goods": ["书特"],

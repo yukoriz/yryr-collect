@@ -1874,6 +1874,262 @@
     }
   ]
 },
+{
+  "title": "摇曳百合17卷",
+  "aliases": ["yryr17", "摇曳百合17册漫画", "摇曳百合第17卷"],
+  "date": "2019-08-29",
+  "cover": "images/20190829-yryr17/cover-01.webp",
+  "desc": "活动时间：2019-08-29\n备注：摇曳百合17卷发售，各店铺购入特典插画卡。",
+  "photos": [
+    {
+      "src": "images/20190829-yryr17/cover-01.webp",
+      "name": "普装版封面",
+      "roles": ["杉浦绫乃","赤座灯里"],
+      "goods": ["漫画书"],
+      "info": ""
+    },
+    {
+      "src": "images/20190829-yryr17/cover-02.webp",
+      "name": "特装版封面",
+      "roles": ["杉浦绫乃","赤座灯里"],
+      "goods": ["漫画书"],
+      "info": ""
+    },
+    {
+      "src": "images/20190829-yryr17/extra.webp",
+      "name": "小册子",
+      "roles": ["赤座灯里"],
+      "goods": ["册子/本子"],
+      "info": "特装版附赠"
+    },
+    {
+      "src": "images/20190829-yryr17/sum.webp",
+      "name": "店铺特典汇总",
+      "roles": [],
+      "goods": [],
+      "info": "各店铺购入特典一览"
+    },
+    {
+      "src": "images/20190829-yryr17/01.webp",
+      "name": "yryr17 Gamers特典",
+      "roles": ["学生会"],
+      "goods": ["书特"],
+      "info": "ゲーマーズ（Gamers）购入特典，描き下ろしイラストカード"
+    },
+    {
+      "src": "images/20190829-yryr17/02.webp",
+      "name": "yryr17 Animate特典",
+      "roles": ["娱乐部"],
+      "goods": ["书特"],
+      "info": "アニメイト（Animate）购入特典，描き下ろしイラストカード"
+    },
+    {
+      "src": "images/20190829-yryr17/03.webp",
+      "name": "yryr17 A店限定亚克力特典",
+      "roles": ["娱乐部"],
+      "goods": ["亚克力", "书特"],
+      "info": "アニメイト（Animate）限定店头购入特典，アクリルスタンド，イラストカード付き（有料代＋800円＋税）"
+    },
+    {
+      "src": "images/20190829-yryr17/04.webp",
+      "name": "yryr17 蜜瓜特典",
+      "roles": ["一年级组"],
+      "goods": ["书特"],
+      "info": "メロンブックス（Melonbooks 蜜瓜）购入特典，描き下ろしイラストカード"
+    },
+    {
+      "src": "images/20190829-yryr17/05.webp",
+      "name": "yryr17 虎穴特典",
+      "roles": ["二年级组"],
+      "goods": ["书特"],
+      "info": "とらのあな（Toranoana 虎之穴）购入特典，描き下ろしイラストカード"
+    },
+    {
+      "src": "images/20190829-yryr17/06.webp",
+      "name": "yryr17 应援店二色纸风特典",
+      "roles": ["赤座灯里","杉浦绫乃"],
+      "goods": ["书特"],
+      "info": "WonderGOO/COMIC ZIN/芳林堂書店/三洋堂書店/まんが王倶楽部/ブックエース/他 特製ミニ色紙風イラストカード"
+    }
+  ]
+},
+{
+  "title": "摇曳百合1~23卷 TSUTAYA限定有償特典",
+  "aliases": ["yryr tsutaya 1-23", "ゆるゆり1～23巻 TSUTAYA有償特典", "摇曳百合TSUTAYA全套亚克力立牌受注"],
+  "date": "2024-12-24",
+  "cover": "images/20241224-23tsutaya/sum.webp",
+  "desc": "活动时间：预约2024.11.01–11.10，发售2024.12.24\n备注：TSUTAYAオンラインショッピング（TSUTAYA线上商店）限定有償特典，立牌，1～13卷新装版 /14～23卷通常版，本体+1815日元（税込）",
+  "photos": [
+    {
+      "src": "images/20241224-23tsutaya/sum.webp",
+      "name": "TSUTAYA全套特典汇总",
+      "roles": [],
+      "goods": [],
+      "info": "1~23卷TSUTAYA限定有償立牌一览"
+    },
+    {
+      "src": "images/20241224-23tsutaya/1.webp",
+      "name": "yryr1 TSUTAYA有償特典立牌",
+      "roles": ["赤座灯里","船见结衣","岁纳京子"],
+      "goods": ["立牌","书特"],
+      "info": "TSUTAYA（ツタヤ）线上商店限定有償特典，立牌"
+    },
+    {
+      "src": "images/20241224-23tsutaya/2.webp",
+      "name": "yryr2 TSUTAYA有償特典立牌",
+      "roles": ["娱乐部"],
+      "goods": ["立牌","书特"],
+      "info": "TSUTAYA（ツタヤ）线上商店限定有償特典，立牌"
+    },
+    {
+      "src": "images/20241224-23tsutaya/3.webp",
+      "name": "yryr3 TSUTAYA有償特典立牌",
+      "roles": ["学生会"],
+      "goods": ["立牌","书特"],
+      "info": "TSUTAYA（ツタヤ）线上商店限定有償特典，立牌"
+    },
+    {
+      "src": "images/20241224-23tsutaya/4.webp",
+      "name": "yryr4 TSUTAYA有償特典立牌",
+      "roles": ["全员"],
+      "goods": ["立牌","书特"],
+      "info": "TSUTAYA（ツタヤ）线上商店限定有償特典，立牌"
+    },
+    {
+      "src": "images/20241224-23tsutaya/5.webp",
+      "name": "yryr5 TSUTAYA有償特典立牌",
+      "roles": ["吉川千夏","赤座灯里"],
+      "goods": ["立牌","书特"],
+      "info": "TSUTAYA（ツタヤ）线上商店限定有償特典，立牌"
+    },
+    {
+      "src": "images/20241224-23tsutaya/6.webp",
+      "name": "yryr6 TSUTAYA有償特典立牌",
+      "roles": ["吉川千夏","船见结衣"],
+      "goods": ["立牌","书特"],
+      "info": "TSUTAYA（ツタヤ）线上商店限定有償特典，立牌"
+    },
+    {
+      "src": "images/20241224-23tsutaya/7.webp",
+      "name": "yryr7 TSUTAYA有償特典立牌",
+      "roles": ["岁纳京子","杉浦绫乃"],
+      "goods": ["立牌","书特"],
+      "info": "TSUTAYA（ツタヤ）线上商店限定有償特典，立牌"
+    },
+    {
+      "src": "images/20241224-23tsutaya/8.webp",
+      "name": "yryr8 TSUTAYA有償特典立牌",
+      "roles": ["古谷向日葵","大室樱子"],
+      "goods": ["立牌","书特"],
+      "info": "TSUTAYA（ツタヤ）线上商店限定有償特典，立牌"
+    },
+    {
+      "src": "images/20241224-23tsutaya/9.webp",
+      "name": "yryr9 TSUTAYA有償特典立牌",
+      "roles": ["赤座灯里","吉川千夏"],
+      "goods": ["立牌","书特"],
+      "info": "TSUTAYA（ツタヤ）线上商店限定有償特典，立牌"
+    },
+    {
+      "src": "images/20241224-23tsutaya/10.webp",
+      "name": "yryr10 TSUTAYA有償特典立牌",
+      "roles": ["娱乐部"],
+      "goods": ["立牌","书特"],
+      "info": "TSUTAYA（ツタヤ）线上商店限定有償特典，立牌"
+    },
+    {
+      "src": "images/20241224-23tsutaya/11.webp",
+      "name": "yryr11 TSUTAYA有償特典立牌",
+      "roles": ["岁纳京子","赤座灯里"],
+      "goods": ["立牌","书特"],
+      "info": "TSUTAYA（ツタヤ）线上商店限定有償特典，立牌"
+    },
+    {
+      "src": "images/20241224-23tsutaya/12.webp",
+      "name": "yryr12 TSUTAYA有償特典立牌",
+      "roles": ["娱乐部","岁纳京子"],
+      "goods": ["立牌","书特"],
+      "info": "TSUTAYA（ツタヤ）线上商店限定有償特典，立牌"
+    },
+    {
+      "src": "images/20241224-23tsutaya/13.webp",
+      "name": "yryr13 TSUTAYA有償特典立牌",
+      "roles": ["船见结衣","岁纳京子"],
+      "goods": ["立牌","书特"],
+      "info": "TSUTAYA（ツタヤ）线上商店限定有償特典，立牌"
+    },
+    {
+      "src": "images/20241224-23tsutaya/14.webp",
+      "name": "yryr14 TSUTAYA有償特典立牌",
+      "roles": ["老师组"],
+      "goods": ["立牌","书特"],
+      "info": "TSUTAYA（ツタヤ）线上商店限定有償特典，立牌"
+    },
+    {
+      "src": "images/20241224-23tsutaya/15.webp",
+      "name": "yryr15 TSUTAYA有償特典立牌",
+      "roles": ["娱乐部"],
+      "goods": ["立牌","书特"],
+      "info": "TSUTAYA（ツタヤ）线上商店限定有償特典，立牌"
+    },
+    {
+      "src": "images/20241224-23tsutaya/16.webp",
+      "name": "yryr16 TSUTAYA有償特典立牌",
+      "roles": ["娱乐部"],
+      "goods": ["立牌","书特"],
+      "info": "TSUTAYA（ツタヤ）线上商店限定有償特典，立牌"
+    },
+    {
+      "src": "images/20241224-23tsutaya/17.webp",
+      "name": "yryr17 TSUTAYA有償特典立牌",
+      "roles": ["船见结衣","岁纳京子"],
+      "goods": ["立牌","书特"],
+      "info": "TSUTAYA（ツタヤ）线上商店限定有償特典，立牌"
+    },
+    {
+      "src": "images/20241224-23tsutaya/18.webp",
+      "name": "yryr18 TSUTAYA有償特典立牌",
+      "roles": ["吉川千夏","岁纳京子"],
+      "goods": ["立牌","书特"],
+      "info": "TSUTAYA（ツタヤ）线上商店限定有償特典，立牌"
+    },
+    {
+      "src": "images/20241224-23tsutaya/19.webp",
+      "name": "yryr19 TSUTAYA有償特典立牌",
+      "roles": ["杉浦绫乃","岁纳京子"],
+      "goods": ["立牌","书特"],
+      "info": "TSUTAYA（ツタヤ）线上商店限定有償特典，立牌"
+    },
+    {
+      "src": "images/20241224-23tsutaya/20.webp",
+      "name": "yryr20 TSUTAYA有償特典立牌",
+      "roles": ["杉浦绫乃","池田千岁"],
+      "goods": ["立牌","书特"],
+      "info": "TSUTAYA（ツタヤ）线上商店限定有償特典，立牌"
+    },
+    {
+      "src": "images/20241224-23tsutaya/21.webp",
+      "name": "yryr21 TSUTAYA有償特典立牌",
+      "roles": ["船见结衣","船见真理"],
+      "goods": ["立牌","书特"],
+      "info": "TSUTAYA（ツタヤ）线上商店限定有償特典，立牌"
+    },
+    {
+      "src": "images/20241224-23tsutaya/22.webp",
+      "name": "yryr22 TSUTAYA有償特典立牌",
+      "roles": ["岁纳京子","吉川千夏"],
+      "goods": ["立牌","书特"],
+      "info": "TSUTAYA（ツタヤ）线上商店限定有償特典，立牌"
+    },
+    {
+      "src": "images/20241224-23tsutaya/23.webp",
+      "name": "yryr23 TSUTAYA有償特典立牌",
+      "roles": ["船见结衣","杉浦绫乃"],
+      "goods": ["立牌","书特"],
+      "info": "TSUTAYA（ツタヤ）线上商店限定有償特典，立牌"
+    }
+  ]
+},
 
 {
   "title": "大室家 9卷",

@@ -276,25 +276,23 @@
   .toolbar .spacer{flex:1;}
   .count{font-size:13px;color:var(--sub);}
 
-  /* ===== 活动卡片网格 ===== */
-  .grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));}
+  /* ===== 活动卡片网格（精简小卡片 + 竖版 3:4 封面） ===== */
+  .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));}
   .card{
-    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    background:var(--card);border:1px solid var(--line);border-radius:12px;
     overflow:hidden;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease;
   }
   .card:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(181,88,121,.08);}
-  .card .thumb{width:100%;aspect-ratio:4/3;background:var(--thumb-bg);overflow:hidden;display:flex;align-items:center;justify-content:center;}
+  .card .thumb{width:100%;aspect-ratio:3/4;background:var(--thumb-bg);overflow:hidden;display:flex;align-items:center;justify-content:center;}
   .card .thumb img{
     width:100%;height:100%;object-fit:cover;display:block;
     opacity:0;transition:opacity .25s ease;
   }
   .card .thumb img.loaded{opacity:1;}
-  .card .noimg{color:#d2b8c2;font-size:13px;}
-  .card .body{padding:14px 16px;}
-  .card .title{font-size:15px;font-weight:600;line-height:1.4;margin-bottom:6px;}
-  .card .date{font-size:13px;color:var(--sub);margin-bottom:8px;}
-  .card .tags{display:flex;flex-wrap:wrap;gap:6px;}
-  .card .tags span{font-size:12px;color:var(--accent);background:var(--accent-soft);border-radius:6px;padding:2px 8px;}
+  .card .noimg{color:#d2b8c2;font-size:12.5px;}
+  .card .body{padding:10px 12px;}
+  .card .title{font-size:14px;font-weight:600;line-height:1.35;margin-bottom:3px;}
+  .card .date{font-size:12px;color:var(--sub);}
 
   /* ===== 制品/角色视图：图片网格（选中制品或角色后出现） ===== */
   .goods-grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));}
@@ -413,7 +411,7 @@
     .sb-scroll{
       max-height:220px;
     }
-    .grid{grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;}
+    .grid{grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:12px;}
     .goods-grid{grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;}
     .wrap{padding:22px 16px 70px;}
   }
@@ -426,10 +424,11 @@
     .count{flex:1 1 100%;}
     header h1{font-size:20px;}
     .site-logo{height:34px;}
-    .grid{grid-template-columns:repeat(2,1fr);gap:12px;}
+    .grid{grid-template-columns:repeat(3,1fr);gap:10px;}
     .goods-grid{grid-template-columns:repeat(2,1fr);gap:12px;}
-    .card .body{padding:10px 12px;}
-    .card .title{font-size:14px;}
+    .card .body{padding:8px 10px;}
+    .card .title{font-size:13px;}
+    .card .date{font-size:11.5px;}
     .g-card .body{padding:10px 12px;}
     .modal{border-radius:14px;}
     .modal .m-body{padding:14px 16px 18px;}
@@ -438,7 +437,8 @@
     .modal .m-thumbs img{width:60px;height:60px;}
   }
   @media(max-width:380px){
-    .grid,.goods-grid{grid-template-columns:1fr;}
+    .grid{grid-template-columns:repeat(2,1fr);}
+    .goods-grid{grid-template-columns:1fr;}
   }
 </style>
 </head>
@@ -988,11 +988,6 @@ function firstPhotoSrc(a){
   const p = (a.photos||[]).map(normPhoto).find(x=>isValidSrc(x.src));
   return p ? p.src : "";
 }
-function getActivityRoles(a){
-  const set = new Set();
-  (a.photos||[]).forEach(p=>normPhoto(p).roles.forEach(r=>set.add(r)));
-  return sortRolesList(set);
-}
 // 收集符合当前“角色 tag / 制品 tag / 搜索词”条件的图片列表
 function collectMatchedPhotos(list){
   const out = [];
@@ -1011,7 +1006,7 @@ function collectMatchedPhotos(list){
 }
 
 /* ---------- 主渲染（分批加载避免首屏并发拥堵） ---------- */
-const BATCH_SIZE = 24;
+const BATCH_SIZE = 30;
 let visibleLimit = BATCH_SIZE;
 const loadMoreWrap = document.getElementById('loadMoreWrap');
 const loadMoreBtn = document.getElementById('loadMoreBtn');
@@ -1022,7 +1017,7 @@ function render(resetPage = true){
   const q = kw.value.trim();
   const isPhotoGridMode = Boolean(activeGoods || activeRole || q);
 
-  // 当选中“角色 / 制品 / 搜索关键词”时，按单张图片维度展示匹配周边
+  // 当选中“角色 / 制品 / 搜索关键词”时，按单张图片维度展示匹配周边（卡片外不显示角色标签）
   if(isPhotoGridMode){
     grid.style.display = 'none';
     goodsGrid.style.display = 'grid';
@@ -1046,8 +1041,6 @@ function render(resetPage = true){
     shown.forEach((item, idx)=>{
       const card = document.createElement('div');
       card.className = 'g-card';
-      const sortedItemRoles = sortRolesList(new Set(item.photo.roles));
-      const roleHtml = sortedItemRoles.map(t=>`<span class="r">${escapeHtml(t)}</span>`).join('');
       const goodsHtml = item.photo.goods.filter(g=>!HIDDEN_GOODS.includes(g)).map(t=>`<span class="g">${escapeHtml(t)}</span>`).join('');
       const nameHtml = item.photo.name
         ? `<div class="g-name">${escapeHtml(item.photo.name)}</div>` : '';
@@ -1057,7 +1050,7 @@ function render(resetPage = true){
         <div class="body">
           ${nameHtml}
           <div class="g-from">${escapeHtml(item.activity.title)} · ${escapeHtml(item.activity.date)}</div>
-          <div class="g-tags">${roleHtml}${goodsHtml}</div>
+          <div class="g-tags">${goodsHtml}</div>
         </div>`;
       card.addEventListener('click', ()=>openLightbox(item.activity, item.index));
       goodsGrid.appendChild(card);
@@ -1072,7 +1065,7 @@ function render(resetPage = true){
     return;
   }
 
-  // 默认（未选角色、未选制品、无搜索词）：活动卡片视图
+  // 默认（未选角色、未选制品、无搜索词）：活动卡片视图（仅显示封面、活动名、时间）
   goodsGrid.style.display = 'none';
   grid.style.display = 'grid';
   hintEl.style.display = 'none';
@@ -1086,17 +1079,15 @@ function render(resetPage = true){
     card.className = 'card';
     const rawCover = a.cover ? resolveSrc(a.cover) : "";
     const src = isValidSrc(rawCover) ? rawCover : firstPhotoSrc(a);
-    const loadAttr = idx < 6 ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"';
+    const loadAttr = idx < 10 ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"';
     const thumb = src
       ? `<div class="thumb"><img referrerpolicy="no-referrer" src="${escapeHtml(src)}" ${loadAttr} decoding="async" onload="this.classList.add('loaded')" onerror="fallbackImg(this)" alt="${escapeHtml(a.title)}"></div>`
       : `<div class="thumb"><span class="noimg">暂无封面</span></div>`;
-    const roleHtml = getActivityRoles(a).map(t=>`<span>${escapeHtml(t)}</span>`).join('');
     card.innerHTML = `
       ${thumb}
       <div class="body">
         <div class="title">${escapeHtml(a.title)}</div>
         <div class="date">${escapeHtml(a.date)}</div>
-        <div class="tags">${roleHtml}</div>
       </div>`;
     card.addEventListener('click', ()=>openLightbox(a, 0));
     grid.appendChild(card);
